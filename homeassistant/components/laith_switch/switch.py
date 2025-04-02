@@ -1,11 +1,14 @@
 """Laith Switch integration for Home Assistant."""
 
+import logging
 from typing import Any
 
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+
+_LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(
@@ -34,6 +37,7 @@ class LaithSwitch(SwitchEntity):
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the switch on."""
         self._is_on = True
+        _LOGGER.log(logging.INFO, "turning on the switch using async turn on")
         self.async_write_ha_state()
 
     async def async_turn_off(self, **kwargs: Any) -> None:
