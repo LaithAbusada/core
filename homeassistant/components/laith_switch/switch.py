@@ -35,7 +35,7 @@ class LaithSwitch(SwitchEntity):
         return self._is_on
 
     async def async_turn_on(self, **kwargs: Any) -> None:
-        """Turn the switch on."""
+        """Turn the switch on. using async turn on."""
         self._is_on = True
         _LOGGER.log(logging.INFO, "turning on the switch using async turn on")
         self.async_write_ha_state()
